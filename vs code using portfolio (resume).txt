@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dharanika K — Portfolio</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #08121a;
+      --accent1: #7c5cff;
+      --accent2: #00d4ff;
+      --accent3: #ff66c4;
+      --muted: rgba(255,255,255,0.7);
+      --radius: 14px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Inter",system-ui;
+      background: linear-gradient(180deg,var(--bg1),var(--bg2));
+      overflow-x:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      color:#e6eef8;
+    }
+
+    /* Animated glowing background */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(600px 400px at 25% 20%, rgba(124,92,255,0.15), transparent 70%),
+        radial-gradient(700px 500px at 80% 80%, rgba(0,212,255,0.12), transparent 70%),
+        radial-gradient(500px 500px at 50% 50%, rgba(255,102,196,0.10), transparent 70%);
+      animation:bgGlow 12s ease-in-out infinite alternate;
+      z-index:-1;
+    }
+    @keyframes bgGlow{
+      0%{filter:hue-rotate(0deg);opacity:0.8;}
+      50%{filter:hue-rotate(90deg);opacity:1;}
+      100%{filter:hue-rotate(180deg);opacity:0.8;}
+    }
+
+    /* LAYOUT */
+    .container{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:28px;
+      max-width:1100px;
+      width:100%;
+    }
+
+    .sidebar, .main{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:var(--radius);
+      backdrop-filter:blur(8px);
+      box-shadow:0 8px 40px rgba(0,0,0,0.4);
+      padding:22px;
+    }
+
+    /* SIDEBAR */
+    .avatar{
+      width:100%;
+      aspect-ratio:1/1;
+      border-radius:50%;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 0 25px rgba(124,92,255,0.4);
+      margin-bottom:16px;
+    }
+
+    .profile-portrait{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:42px;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));
+      background-size:200% 200%;
+      animation:gradientShift 5s ease-in-out infinite alternate;
+    }
+    @keyframes gradientShift{
+      0%{background-position:0% 50%;}
+      100%{background-position:100% 50%;}
+    }
+
+    h1.name{
+      text-align:center;
+      font-size:22px;
+      color:#fff;
+      font-weight:800;
+      letter-spacing:1px;
+      margin-bottom:4px;
+      text-shadow:0 0 10px rgba(124,92,255,0.8);
+      animation:glowText 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowText{
+      0%{text-shadow:0 0 8px var(--accent1);}
+      100%{text-shadow:0 0 20px var(--accent2);}
+    }
+
+    p.sub{
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .contact{
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .contact b{color:#fff;font-weight:600}
+
+    .chip{
+      display:inline-block;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#041024;
+      font-weight:700;
+      font-size:13px;
+      padding:6px 10px;
+      border-radius:999px;
+      text-align:center;
+      margin-top:10px;
+      animation:pulseChip 2s ease-in-out infinite;
+    }
+    @keyframes pulseChip{
+      0%,100%{box-shadow:0 0 10px rgba(124,92,255,0.4);}
+      50%{box-shadow:0 0 25px rgba(0,212,255,0.7);}
+    }
+
+    .section-title{
+      margin-top:16px;
+      font-size:13px;
+      color:#dbeafe;
+      font-weight:700;
+    }
+
+    .skills{
+      display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;
+    }
+    .skill{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:8px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      color:var(--muted);
+      animation:blinkSkill 6s infinite alternate;
+    }
+    @keyframes blinkSkill{
+      0%{border-color:rgba(124,92,255,0.3);}
+      50%{border-color:rgba(0,212,255,0.4);}
+      100%{border-color:rgba(255,102,196,0.3);}
+    }
+
+    /* MAIN AREA */
+    .hero h2{
+      margin:0;
+      font-size:22px;
+      color:#fff;
+    }
+    .role{
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;
+      color:transparent;
+      font-weight:700;
+      animation:pulseText 3s ease-in-out infinite;
+    }
+    @keyframes pulseText{
+      0%,100%{text-shadow:0 0 6px rgba(124,92,255,0.4);}
+      50%{text-shadow:0 0 16px rgba(0,212,255,0.7);}
+    }
+
+    #typed{
+      color:var(--muted);
+      font-size:14px;
+      margin-top:8px;
+      min-height:40px;
+    }
+    #typed::after{
+      content:"|";
+      color:var(--accent2);
+      animation:blinkCursor 0.8s infinite;
+    }
+    @keyframes blinkCursor{0%,100%{opacity:1;}50%{opacity:0;}}
+
+    .card{
+      background:rgba(255,255,255,0.03);
+      padding:16px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.05);
+      margin-top:14px;
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 0 20px rgba(0,212,255,0.3);
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      margin-top:12px;
+      font-size:13px;
+    }
+
+    @media(max-width:960px){
+      .container{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="avatar"><div class="profile-portrait">DK</div></div>
+      <h1 class="name">DHARANIKA K</h1>
+      <p class="sub">BE — Electronics & Communication Engineering (ECE), 3rd Year | Graduating 2027</p>
+
+      <div class="contact">
+        <div><b>College:</b> K. Ramakrishnan College of Engineering, Trichy</div>
+        <div><b>Phone:</b> 99949 99651</div>
+        <div><b>Email:</b> dharanikak206@gmail.com</div>
+        <div><b>DOB:</b> 07/11/2005</div>
+        <div><b>Gender:</b> Female</div>
+      </div>
+
+      <div class="chip">Internship Seeker • IoT & Embedded</div>
+
+      <div class="section-title">Technical Skills</div>
+      <div class="skills">
+        <span class="skill">Java</span>
+        <span class="skill">Python</span>
+        <span class="skill">Arduino</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">IoT</span>
+      </div>
+
+      <div class="section-title">Languages</div>
+      <div class="skills">
+        <span class="skill">English</span>
+        <span class="skill">Tamil</span>
+      </div>
+    </aside>
+
+    <main class="main">
